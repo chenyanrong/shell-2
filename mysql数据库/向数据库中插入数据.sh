@@ -3,6 +3,7 @@
 
 MYSQL=`which mysql`
 
+
 if [ $# -ne 2 ]
 then
 	echo "Usage:mtest2 emplid lastname firstname salary"
