@@ -3,19 +3,14 @@
 # Delete_User - Automates the 4 steps to remove an account
 #
 #################################################################
-# 
 # Define Functions
-#
 #################################################################
 function get_answer {
-#
 	unset ANSWER
 	ASK_COUNT=0
-#
 	while [ -z "$ANSWER" ] # while no answer is given, keep asking
 	do
 		ASK_COUNT=$[ $ASK_COUNT + 1 ]
-#
 		case $ASK_COUNT in			# If user gives no answer in time allowed
 		2)
 			echo 
@@ -55,12 +50,9 @@ function get_answer {
 #
 	unset LINE1
 	unset LINE2
-#
 }    #end of get_answer function
-#
 #################################################################
 function process_answer {
-#
 	case $ANSWER in
 	y|Y|YES|yes|yEs|yeS|YEs|yES)
 	# If user answers "yes".do nothing.
@@ -78,17 +70,13 @@ function process_answer {
 	# Do a little variable clean-up
 	unset EXIT_LINE1
 	unset EXIT_LINE2
-#
 } #End of process_answer function
-#
 ################################################################
 #
 # End of Function Definitions
 #
 ############### Main Script #################################
-#
 # Get name of User Account to check
-#
 echo "Step #1 - Determine User Account name to delete "
 echo
 LINE1="Please enter the username of the user"
@@ -101,11 +89,8 @@ USER_ACCOUNT=$ANSWER
 LINE1="Is $USER_ACCOUNT the user account"
 LINE2="you wish to delete from the system?[ y/n ]:"
 get_answer
-#
 ############################################################
-#
 # Check that USER_ACCOUNT is really an account on the system
-#
 USER_ACCOUNT_RECORD=$(cat /etc/passwd | grep -w $USER_ACCOUNT)
 #
 if [ $? -eq 1 ]			# If the account is not found, exit script
@@ -124,11 +109,8 @@ echo
 #
 LINE1="Is this the correct User Account?[y/n]:"
 get_answer
-#
-#
 # Call process_answer function:
 #	if user answers anything but "yes", exit script
-#
 EXIT_LINE1="Because the account, $USER_ACCOUNT, is not "
 EXIT_LINE2="the one you wish to delete, we are leaving the script..."
 process_anser
