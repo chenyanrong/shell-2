@@ -1,11 +1,9 @@
 #!/bin/bash
 #正则表达式
-
 gawk 'BEGIN{FS=","} 
 /11/{print $1}
 ' test
 
-#if-else语句
 gawk '{
 if($1 > 20)
 {
@@ -18,7 +16,6 @@ else
 	print x
 }
 }' test
-
 #while 语句
 gawk '{
 total = 0
@@ -31,8 +28,6 @@ while(i<4)
 avg = total/3
 print "Average:".avg
 }' test
-
-
 #do-while语句
 gawk '{
 total=0
@@ -43,7 +38,6 @@ do
 	i++
 }while(total < 150)
 print total }' test
-
 
 #for语句
 gawk '{
